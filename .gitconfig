@@ -1,0 +1,8 @@
+[init]
+	defaultBranch = main
+[user]
+	name = Yuji Nishimura
+	email = yuji@liclab.com
+[core]
+	excludesfile = ~/.gitignore
+	editor = vim
