@@ -1,7 +1,7 @@
 [init]
 	defaultBranch = main
 [user]
-	name = Yuji Nishimura
+	name = nishim
 	email = yuji@liclab.com
 [core]
 	excludesfile = ~/.gitignore
