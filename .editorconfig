@@ -14,9 +14,15 @@ trim_trailing_whitespace = false
 [*.{yml,yaml}]
 indent_size = 2
 
+[*.{js,jsx}]
+indent_size = 2
+
 [*.{ts,tsx}]
 indent_size = 2
 
 [*.go]
 indent_size = 4
 indent_style = tab
+
+[*.{css,scss}]
+indent_size = 2
