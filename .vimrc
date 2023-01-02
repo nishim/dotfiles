@@ -46,7 +46,7 @@ set smartindent
 set helplang=en
 
 filetype plugin on
-filetype indent on 
+filetype indent on
 
 if has("autocmd")
   autocmd FileType html       setlocal sw=2 sts=2 ts=2 et
@@ -58,9 +58,6 @@ endif
 set clipboard=unnamed
 
 syntax enable
-
-colorscheme iceberg
-set t_Co=256
 
 " https://github.com/junegunn/vim-plug
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -78,7 +75,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'leafgarland/typescript-vim'
 
   Plug 'fatih/vim-go'
+
+  Plug 'cocopon/iceberg.vim'
 call plug#end()
+
+colorscheme iceberg
+set t_Co=256
 
 au BufRead,BufNewFile *.md set filetype=markdown
 let g:previm_open_cmd = 'open -a Safari'
