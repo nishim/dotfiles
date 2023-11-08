@@ -10,7 +10,8 @@ node_modules
 #
 # Visual Studio Code
 #
-.vscode
+.vscode/*
+!.vscode/launch.json
 
 #
 # vim
