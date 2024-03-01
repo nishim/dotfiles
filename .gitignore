@@ -1,6 +1,7 @@
 # System
 .DS_Store
 Thumbs.db
+__MACOSX/
 
 #
 # Node.js
