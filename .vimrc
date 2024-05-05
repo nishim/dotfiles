@@ -51,7 +51,9 @@ filetype indent on
 if has("autocmd")
   autocmd FileType html       setlocal sw=2 sts=2 ts=2 et
   autocmd FileType javascript setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType typescript setlocal sw=2 sts=2 ts=2 et
   autocmd FileType jsx        setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType tsx        setlocal sw=2 sts=2 ts=2 et
 endif
 
 
@@ -77,6 +79,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'fatih/vim-go'
 
   Plug 'cocopon/iceberg.vim'
+
+  Plug 'pangloss/vim-javascript'    " JavaScript support
+  Plug 'leafgarland/typescript-vim' " TypeScript syntax
+  Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+  Plug 'jparise/vim-graphql'        " GraphQL syntax
 call plug#end()
 
 colorscheme iceberg
