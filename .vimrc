@@ -76,6 +76,9 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'fatih/vim-go'
 
+  " run `brew install sqlparse` first
+  Plug 'mattn/vim-sqlfmt'
+
   Plug 'cocopon/iceberg.vim'
 call plug#end()
 
