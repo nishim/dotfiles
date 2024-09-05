@@ -5,6 +5,9 @@ if type brew &>/dev/null; then
 
   autoload -Uz compinit
   compinit
+
+
+  PATH=$(brew --prefix)/opt/postgresql@15/bin/:$PATH
 fi
 
 export CLICOLOR=1
@@ -45,4 +48,8 @@ list-ec2() {
   echo "      --target  \$INSTANCE_ID \ "
   echo "      --document-name AWS-StartPortForwardingSessionToRemoteHost \ "
   echo "      --parameters 'portNumber=\$REMOTE_PORT,localPortNumber=\$LOCAL_PORT,host=\$DESTINATION_HOST'"
+}
+
+sound() {
+  afplay /System/Library/Sounds/Ping.aiff
 }
