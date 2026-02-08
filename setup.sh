@@ -8,6 +8,7 @@ ln -fs $PWD/.gitignore ~/.gitignore
 ln -fs $PWD/.gitignore ~/.gitignore
 ln -fs $PWD/.vimrc ~/.vimrc
 ln -fs $PWD/.zshrc ~/.zshrc
+ln -fs $PWD/.config/mise/config.toml ~/.config/mise/config.toml
 
 
 mkdir -p ~/.zsh
