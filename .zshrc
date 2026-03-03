@@ -5,9 +5,6 @@ if type brew &>/dev/null; then
 
   autoload -Uz compinit
   compinit
-
-
-  PATH=$(brew --prefix)/opt/postgresql@15/bin/:$PATH
 fi
 
 export CLICOLOR=1
@@ -16,6 +13,14 @@ PATH=~/go/bin/:$PATH
 
 #alias pwgen='cat /dev/urandom | LC_CTYPE=C tr -dc 'a-z0-9' | fold -w 16 | head -n 32'
 
+#
+# asdf
+# https://asdf-vm.com/
+#
+# Plugins
+# - https://github.com/asdf-community/asdf-python
+#
+#export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 source ~/.zsh/git-prompt.sh
 fpath=(~/.zsh $fpath)

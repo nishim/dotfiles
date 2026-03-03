@@ -96,4 +96,19 @@ au BufRead,BufNewFile *.md set filetype=markdown
 let g:previm_open_cmd = 'open -a Safari'
 
 
+" 全角英数字記号を半角に変換する関数
+function! ZenToHan()
+  " 全角英数字を半角に変換
+  let l:pos = getpos(".")
+  %s/[！-～]/\=nr2char(char2nr(submatch(0)) - 65248)/ge
+  " 特定の全角記号を半角に変換 (スペース)
+  %s/　/ /ge
+  call setpos('.', l:pos)
+endfunction
 
+" コマンドを定義
+command! ZenToHan call ZenToHan()
+
+" オプション: キーマッピングを設定する場合
+" ノーマルモードで <Leader>z を押すと変換を実行
+nnoremap <Leader>z :call ZenToHan()<CR>
