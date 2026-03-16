@@ -17,3 +17,5 @@ ln -fs $PWD/git-prompt.sh ~/.zsh/git-prompt.sh
 ln -fs $PWD/git-completion.bash ~/.zsh/git-completion.bash
 ln -fs $PWD/git-completion.zsh ~/.zsh/_git
 
+mkdir -p ~/.terraform.d/plugin-cache
+ln -fs $PWD/.terraformrc ~/.terraformrc
