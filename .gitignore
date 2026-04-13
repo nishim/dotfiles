@@ -11,8 +11,8 @@ node_modules
 #
 # Visual Studio Code
 #
-.vscode/*
-!.vscode/launch.json
+#.vscode/*
+#!.vscode/launch.json
 
 #
 # vim

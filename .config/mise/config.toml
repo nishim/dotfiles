@@ -1,21 +1,22 @@
 [tools]
-aws = { version = "2.34.9", symlink_bins = "true" }
-bun = "1.3.10"
+aws = { version = "2.34.29", symlink_bins = "true" }
+bun = "1.3.11"
 claude = "latest"
 codex = "latest"
-duckdb = "1.5.0"
-gh = "2.88.1"
+duckdb = "1.5.1"
+gh = "2.89.0"
 jq = "1.8.1"
 mysql = "latest"
-node = "25.8.1"
-pnpm = "10.32.1"
-postgres = "18.3"
+node = "25.9.0"
+pnpm = "10.33.0"
 pre-commit = "4.5.1"
+python = "3.14.2"
 ripgrep = "15.1.0"
-terraform = "1.14.7"
+terraform = "1.14.8"
 tflint = "latest"
 trivy = "0.69.3"
 
 [settings]
 experimental = true
 paranoid = true
+install_before = "7d"
