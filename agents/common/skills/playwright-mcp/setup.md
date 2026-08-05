@@ -69,6 +69,8 @@ Safari 系の挙動差異を見たいときは `webkit`。
 --blocked-origins="https://api.production.example.com"
 ```
 
+`--allowed-origins` / `--blocked-origins` でアクセス先を絞りたい場合は、**Playwright MCP 自身にブラウザを起動させる構成を優先**する。既存ブラウザへの CDP 接続は限定用途に留め、この制約に依存した運用はしない。加えて、`--allowed-origins` は security boundary ではなく redirect にも効かない前提で扱う。
+
 ### 既存のブラウザにつなぐ(ユーザーの実環境)
 
 ```
@@ -76,6 +78,14 @@ Safari 系の挙動差異を見たいときは `webkit`。
 ```
 
 別途 Playwright MCP Bridge 拡張のインストールが必要。
+
+### 既存の Chromium に CDP 接続する(限定用途)
+
+```
+--cdp-endpoint=http://localhost:9222
+```
+
+既に起動している Chromium 系ブラウザへ接続したいときだけ使う。標準構成としては推奨しない。探索的デバッグやコンソール確認のために必須ではなく、`--allowed-origins` / `--blocked-origins` でアクセス先を絞りたいケースでは通常起動の方を優先する。
 
 ### JSON 設定ファイル
 

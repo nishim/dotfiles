@@ -2,6 +2,8 @@
 
 SKILL.md 本体の中核ループを、よくあるシーン別にもう少し具体的に示す。基本は常に「開く → snapshot → ref を使って操作 → 再 snapshot」。
 
+以下のコード片は説明用の擬似呼び出し。実際の引数名・必須項目・返り値は、その場で見えている Playwright MCP のツールスキーマを優先する。
+
 ## 1. 最小ループ
 
 ```
@@ -87,7 +89,7 @@ browser_snapshot()
 browser_take_screenshot(filename="mobile.png", fullPage=true)
 ```
 
-MCP サーバー起動時に `--device="iPhone 15"` を指定しておくと user-agent / touch / DPR も含めてまとめてエミュレートできる(`references/setup.md` 参照)。
+MCP サーバー起動時に `--device="iPhone 15"` を指定しておくと user-agent / touch / DPR も含めてまとめてエミュレートできる(`setup.md` 参照)。
 
 ## 9. JavaScript を実行して状態を取る
 

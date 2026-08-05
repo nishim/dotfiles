@@ -69,6 +69,8 @@ Safari 系の挙動差異を見たいときは `webkit`。
 --blocked-origins="https://api.production.example.com"
 ```
 
+`--allowed-origins` / `--blocked-origins` でアクセス先を絞りたい場合は、**Playwright MCP 自身にブラウザを起動させる構成を優先**する。既存ブラウザへの CDP 接続は限定用途に留め、この制約に依存した運用はしない。加えて、`--allowed-origins` は security boundary ではなく redirect にも効かない前提で扱う。
+
 ### 既存のブラウザにつなぐ(ユーザーの実環境)
 
 ```
@@ -76,6 +78,14 @@ Safari 系の挙動差異を見たいときは `webkit`。
 ```
 
 別途 Playwright MCP Bridge 拡張のインストールが必要。
+
+### 既存の Chromium に CDP 接続する(限定用途)
+
+```
+--cdp-endpoint=http://localhost:9222
+```
+
+既に起動している Chromium 系ブラウザへ接続したいときだけ使う。標準構成としては推奨しない。探索的デバッグやコンソール確認のために必須ではなく、`--allowed-origins` / `--blocked-origins` でアクセス先を絞りたいケースでは通常起動の方を優先する。
 
 ### JSON 設定ファイル
 
@@ -90,9 +100,9 @@ npx @playwright/mcp@latest --config ./pw-mcp.json
 Claude Code 側で `mcp__playwright__browser_navigate` 等のツールが見えない / 呼ぶとエラーになる場合:
 
 1. **サーバーが起動しているか** — `claude mcp list` で `playwright` が `connected` になっているか。
-2. **バージョンの相性** — `@playwright/mcp` の新しすぎる版で Claude Code からの呼び出しが壊れる事例がある(例: 0.0.56 / 0.0.61 系で問題報告)。ツール名が見えているのに "No such tool" が出る場合、固定バージョン(例: `@playwright/mcp@0.0.41`)を試すのが早い。
+2. **バージョンの相性** — まれに `@playwright/mcp` の更新でツール呼び出し互換が崩れることがある。ツール名が見えているのに "No such tool" が出る場合は、`latest` 固定をやめてチーム内の既知の安定版に pin して切り分ける。
 3. **npx のネットワーク** — 初回は `@playwright/mcp` 本体と Playwright ブラウザバイナリのダウンロードが走る。オフライン / プロキシ環境では別途インストールが必要。
 4. **ブラウザバイナリ不足** — 必要なら MCP サーバーの `browser_install` ツール、もしくはユーザーに `npx playwright install chromium` を実行してもらう。
 5. **サーバー名の不一致** — `.mcp.json` のキーが `playwright` 以外(例: `pw`)になっていれば、ツール名も `mcp__pw__*` になる。合わせる。
 
-Claude 側から npm のインストール状況を調べにいかない(ユーザー環境のため)。確認が要る情報はユーザーに一言聞く。
+読み取りだけで済む確認(ツール一覧、接続状態、設定ファイルの内容確認)はしてよい。一方で、ユーザー環境を書き換える操作(npm install、ブラウザ再インストール、設定変更)へは勝手に進まず、必要ならユーザーに確認を取る。

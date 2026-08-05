@@ -1,6 +1,6 @@
 ---
 name: playwright-mcp
-description: Web アプリケーションを実ブラウザで探索的に動作確認し、CDP 経由で UA 上のエラー(コンソール例外、ネットワーク失敗、JS エラー等)を調査するスキル。Playwright MCP サーバー(`@playwright/mcp`)の `browser_*` ツール群を用いる。ユーザーが「ブラウザで動かして確認して」「このページの動作を見て」「コンソールエラーを調べて」「フォーム/ログインを試して」「実際に触って挙動を確認」といった実ブラウザでの探索的確認を求めたとき、あるいは失敗するページ・API 呼び出し・UI バグの原因調査を依頼されたときに必ず使用する。画面に起きていることを目で見るのではなくアクセシビリティスナップショットで構造的に把握する点が本スキルの肝。
+description: Web アプリケーションを実ブラウザで探索的に動作確認し、UA 上のエラー(コンソール例外、ネットワーク失敗、JS エラー等)を調査するスキル。Playwright MCP サーバー(`@playwright/mcp`)の `browser_*` ツール群を用いる。ユーザーが「ブラウザで動かして確認して」「このページの動作を見て」「コンソールエラーを調べて」「フォーム/ログインを試して」「実際に触って挙動を確認」といった実ブラウザでの探索的確認を求めたとき、あるいは失敗するページ・API 呼び出し・UI バグの原因調査を依頼されたときに使用する。画面に起きていることを目で見るのではなくアクセシビリティスナップショットで構造的に把握する点が本スキルの肝。
 ---
 
 # Playwright MCP — 探索的動作確認 & UA エラー調査
@@ -57,7 +57,7 @@ ref を引用せずにクリックしようとしないこと。過去の snapsh
 - `browser_take_screenshot(filename?, element?, ref?, fullPage?)` — 視覚記録が必要な時だけ。操作判断の根拠には使わない(snapshot が正)。
 - `browser_console_messages()` — コンソール出力の取得(**UA エラー調査の核**)。
 - `browser_network_requests()` — 発生した HTTP リクエスト一覧(失敗応答の特定に使う)。
-- `browser_evaluate(function)` / `browser_run_code(code)` — ページコンテキストで JS を実行。DOM 状態の細かい検証や CDP 的な深掘りに使う。
+- `browser_evaluate(function)` / `browser_run_code(code)` — ページコンテキストで JS を実行。DOM 状態の細かい検証や追加の切り分けに使う。
 - `browser_tabs(action, index?)` — タブの一覧・作成・切り替え・クローズ。
 - `browser_handle_dialog(accept, promptText?)` — alert/confirm/prompt の応答。
 - `browser_file_upload(paths[])` — ファイル選択ダイアログに対するアップロード。

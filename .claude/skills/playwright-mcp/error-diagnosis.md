@@ -1,6 +1,6 @@
 # Error Diagnosis — UA 上のエラー調査レシピ
 
-ブラウザ上で「何かおかしい」を切り分けるための具体手順。Playwright MCP は CDP 越しに実ブラウザを動かしているので、開発者ツールで見えるものは概ね取りに行ける。
+ブラウザ上で「何かおかしい」を切り分けるための具体手順。Playwright MCP の console / network / evaluate 系ツールを使えば、開発者ツールで確認したくなる情報の多くを取得できる。
 
 ## 基本セット(最初に必ず撮るもの)
 
@@ -42,11 +42,11 @@ browser_network_requests()
 ```
 
 401/403 が多ければ認可系(トークン切れ、Cookie が送られてない、SameSite、CSRF)。
-500 なら送信ペイロードを見る。ペイロードだけでは分からない時は、同一リクエストを fetch で再発行して比較:
+500 なら送信ペイロードを見る。ペイロードだけでは分からなくても、**本番や副作用のある POST/PUT/DELETE を安易に再送しない**。再確認が必要なら staging か read-only な GET 系エンドポイントで比較する:
 
 ```
 browser_evaluate(function="async () => {
-  const r = await fetch('/api/x', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({...}) });
+  const r = await fetch('/api/x');
   return { status: r.status, body: await r.text() };
 }")
 ```

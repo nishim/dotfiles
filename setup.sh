@@ -19,3 +19,6 @@ ln -fs $PWD/git-completion.zsh ~/.zsh/_git
 
 mkdir -p ~/.terraform.d/plugin-cache
 ln -fs $PWD/.terraformrc ~/.terraformrc
+
+mkdir -p ~/.claude/skills
+rsync -a --delete "$PWD/agents/common/skills/" ~/.claude/skills/

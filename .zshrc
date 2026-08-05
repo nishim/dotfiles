@@ -12,6 +12,7 @@ export CLICOLOR=1
 PATH=~/go/bin/:$PATH
 
 #alias pwgen='cat /dev/urandom | LC_CTYPE=C tr -dc 'a-z0-9' | fold -w 16 | head -n 32'
+#
 
 #
 # asdf

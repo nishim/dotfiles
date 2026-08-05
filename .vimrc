@@ -45,6 +45,9 @@ set shiftwidth=4
 set smartindent
 set helplang=en
 
+" 編集中でもバッファ切り替え可能
+set hidden
+
 filetype plugin on
 filetype indent on
 
@@ -87,6 +90,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'leafgarland/typescript-vim' " TypeScript syntax
   Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
   Plug 'jparise/vim-graphql'        " GraphQL syntax
+
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 colorscheme iceberg
@@ -95,6 +102,7 @@ set t_Co=256
 au BufRead,BufNewFile *.md set filetype=markdown
 let g:previm_open_cmd = 'open -a Safari'
 
+let g:airline#extensions#tabline#enabled = 1
 
 " 全角英数字記号を半角に変換する関数
 function! ZenToHan()
@@ -112,3 +120,7 @@ command! ZenToHan call ZenToHan()
 " オプション: キーマッピングを設定する場合
 " ノーマルモードで <Leader>z を押すと変換を実行
 nnoremap <Leader>z :call ZenToHan()<CR>
+
+" バッファ切り替え
+nnoremap <Tab> :bn<CR>
+nnoremap <S-Tab> :bp<CR>

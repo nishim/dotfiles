@@ -1,6 +1,6 @@
 ---
 name: playwright-mcp
-description: Web アプリケーションを実ブラウザで探索的に動作確認し、CDP 経由で UA 上のエラー(コンソール例外、ネットワーク失敗、JS エラー等)を調査するスキル。Playwright MCP サーバー(`@playwright/mcp`)の `browser_*` ツール群を用いる。ユーザーが「ブラウザで動かして確認して」「このページの動作を見て」「コンソールエラーを調べて」「フォーム/ログインを試して」「実際に触って挙動を確認」といった実ブラウザでの探索的確認を求めたとき、あるいは失敗するページ・API 呼び出し・UI バグの原因調査を依頼されたときに必ず使用する。画面に起きていることを目で見るのではなくアクセシビリティスナップショットで構造的に把握する点が本スキルの肝。
+description: Web アプリケーションを実ブラウザで探索的に動作確認し、UA 上のエラー(コンソール例外、ネットワーク失敗、JS エラー等)を調査するスキル。Playwright MCP サーバー(`@playwright/mcp`)の `browser_*` ツール群を用いる。ユーザーが「ブラウザで動かして確認して」「このページの動作を見て」「コンソールエラーを調べて」「フォーム/ログインを試して」「実際に触って挙動を確認」といった実ブラウザでの探索的確認を求めたとき、あるいは失敗するページ・API 呼び出し・UI バグの原因調査を依頼されたときに使用する。画面に起きていることを目で見るのではなくアクセシビリティスナップショットで構造的に把握する点が本スキルの肝。
 ---
 
 # Playwright MCP — 探索的動作確認 & UA エラー調査
@@ -57,7 +57,7 @@ ref を引用せずにクリックしようとしないこと。過去の snapsh
 - `browser_take_screenshot(filename?, element?, ref?, fullPage?)` — 視覚記録が必要な時だけ。操作判断の根拠には使わない(snapshot が正)。
 - `browser_console_messages()` — コンソール出力の取得(**UA エラー調査の核**)。
 - `browser_network_requests()` — 発生した HTTP リクエスト一覧(失敗応答の特定に使う)。
-- `browser_evaluate(function)` / `browser_run_code(code)` — ページコンテキストで JS を実行。DOM 状態の細かい検証や CDP 的な深掘りに使う。
+- `browser_evaluate(function)` / `browser_run_code(code)` — ページコンテキストで JS を実行。DOM 状態の細かい検証や追加の切り分けに使う。
 - `browser_tabs(action, index?)` — タブの一覧・作成・切り替え・クローズ。
 - `browser_handle_dialog(accept, promptText?)` — alert/confirm/prompt の応答。
 - `browser_file_upload(paths[])` — ファイル選択ダイアログに対するアップロード。
@@ -74,7 +74,7 @@ ref を引用せずにクリックしようとしないこと。過去の snapsh
 4. **観察されたものを報告する** — 途中で気づいた違和感(壊れたリンク、表示崩れの疑い、遅延、コンソール警告)は最後にまとめて渡す。判断はユーザーに。
 5. **深掘りは要求ベース** — 追加の確認はユーザーが選んで指示するまで広げない。
 
-ログインが必要なアプリを対象にする場合、デフォルトで永続プロファイルが使われるためセッションが残ることを意識する。本番環境 / 認証済みセッションで触る前に、ユーザーに `--isolated` 起動や対象スコープの確認を一度だけ取ること。詳しくは `references/profiles-and-auth.md`。
+ログインが必要なアプリを対象にする場合、デフォルトで永続プロファイルが使われるためセッションが残ることを意識する。本番環境 / 認証済みセッションで触る前に、ユーザーに `--isolated` 起動や対象スコープの確認を一度だけ取ること。詳しくは `profiles-and-auth.md`。
 
 ## UA エラー調査の進め方
 
@@ -87,7 +87,7 @@ ref を引用せずにクリックしようとしないこと。過去の snapsh
 5. **DOM / JS 状態の確認** — 必要なら `browser_evaluate` で `window` の状態、特定要素の class、data-*、テキストを取得。フレームワーク固有のエラー(Vue の warning、React のエラー境界)もここで確認。
 6. **切り分け** — クライアント起因(JS 例外・レンダリング失敗)、通信起因(404/500/タイムアウト)、認可起因(401/403)、環境起因(mixed content / CSP / CORS) のどれに該当するかを明示して報告。
 
-詳しいレシピは `references/error-diagnosis.md`。
+詳しいレシピは `error-diagnosis.md`。
 
 ## スクリーンショット vs スナップショット
 
@@ -105,7 +105,7 @@ ref を引用せずにクリックしようとしないこと。過去の snapsh
 
 必要になった時だけ開く:
 
-- `references/core-workflow.md` — snapshot/ref ベースの操作パターン、form / multi-tab / dialog などの具体例。
-- `references/error-diagnosis.md` — console / network / evaluate を使ったエラー切り分けレシピ集。
-- `references/profiles-and-auth.md` — 永続プロファイル・isolated モード・storageState を使った認証済みセッションの扱い方。
-- `references/setup.md` — MCP サーバーの起動オプション(`--headless`, `--browser`, `--viewport-size`, `--device`, `--allowed-origins` 等)、接続が動かない時の切り分け。
+- `core-workflow.md` — snapshot/ref ベースの操作パターン、form / multi-tab / dialog などの具体例。
+- `error-diagnosis.md` — console / network / evaluate を使ったエラー切り分けレシピ集。
+- `profiles-and-auth.md` — 永続プロファイル・isolated モード・storageState を使った認証済みセッションの扱い方。
+- `setup.md` — MCP サーバーの起動オプション(`--headless`, `--browser`, `--viewport-size`, `--device`, `--allowed-origins` 等)、接続が動かない時の切り分け。
