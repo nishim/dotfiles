@@ -1,0 +1,155 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(biome check:*)",
+      "Bash(bun add:*)",
+      "Bash(bun init:*)",
+      "Bash(claude --version:*)",
+      "Bash(docker compose build:*)",
+      "Bash(docker compose down:*)",
+      "Bash(docker compose ps:*)",
+      "Bash(docker compose up:*)",
+      "Bash(docker manifest:*)",
+      "Bash(docker ps:*)",
+      "Bash(docker start:*)",
+      "Bash(docker stop:*)",
+      "Bash(gh issue list:*)",
+      "Bash(gh issue:*)",
+      "Bash(gh label list:*)",
+      "Bash(gh pr checks:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr diff:*)",
+      "Bash(gh pr edit:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh project item-list:*)",
+      "Bash(gh project list:*)",
+      "Bash(git add:*)",
+      "Bash(git check-ignore:*)",
+      "Bash(jupyter nbconvert --to notebook --execute:*)",
+      "Bash(source venv/bin/activate)",
+      "Bash(git commit:*)",
+      "Bash(git diff:*)",
+      "Bash(git grep:*)",
+      "Bash(git log:*)",
+      "Bash(git push:*)",
+      "Bash(git reset:*)",
+      "Bash(git show:*)",
+      "Bash(git status:*)",
+      "Bash(git switch:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm bootstrap:*)",
+      "Bash(pnpm build:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(pnpm docker:build:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm setup:*)",
+      "Bash(rg:*)",
+      "Bash(terraform fmt:*)",
+      "Bash(terraform init:*)",
+      "Bash(terraform plan:*)",
+      "Bash(terraform show:*)",
+      "Bash(terraform state list:*)",
+      "Bash(terraform validate:*)",
+      "Bash(tflint:*)",
+      "Bash(trivy config:*)",
+      "Bash(wc:*)",
+      "WebFetch(domain:ai.google.dev)",
+      "WebFetch(domain:clickhouse.com)",
+      "WebFetch(domain:docs.cloud.google.com)",
+      "WebFetch(domain:grafana.com)",
+      "WebFetch(domain:opentelemetry.io)",
+      "WebFetch(domain:registry.terraform.io)"
+    ],
+    "deny": [
+      "Bash(aws:*)",
+      "Bash(curl:*)",
+      "Bash(find:*)",
+      "Bash(git checkout:*)",
+      "Bash(git rebase:*)",
+      "Bash(nc:*)",
+      "Bash(npm remove:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(psql:*)",
+      "Bash(rm -rf:*)",
+      "Bash(rm:*)",
+      "Bash(sudo:*)",
+      "Bash(wget:*)",
+      "Read(**/.env)",
+      "Read(**/.env.local)",
+      "Read(.env)",
+      "Read(.env.local)",
+      "Read(.pgpass)",
+      "Read(id_ed25519)",
+      "Read(~/.ssh/*)",
+      "Edit(**/.env)",
+      "Edit(**/.env.local)",
+      "Edit(.env)",
+      "Edit(.env.local)",
+      "Edit(.pgpass)",
+      "Edit(~/.ssh/*)"
+    ],
+    "defaultMode": "acceptEdits"
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude Codeが許可を求めています\" with title \"Claude Code\" subtitle \"確認待ち\" sound name \"Glass\"'"
+          }
+        ]
+      },
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude Codeが入力を求めています\" with title \"Claude Code\" subtitle \"入力待ち\" sound name \"Glass\"'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"タスクが完了しました\" with title \"Claude Code\" subtitle \"処理終了\" sound name \"Hero\"'"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Web Search",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \\\"Claude Codeが許可を求めています\\\" with title \\\"Claude Code\\\" subtitle \\\"確認待ち\\\" sound name \\\"Glass\\\"'"
+          }
+        ]
+      }
+    ]
+  },
+  "language": "Japanese",
+  "plansDirectory": "./plans",
+  "effortLevel": "high",
+  "statusLine": {
+    "type": "command",
+    "command": "sh /Users/yuji/.claude/statusline-command.sh"
+  },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true
+  }
+}
