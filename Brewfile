@@ -42,8 +42,6 @@ brew "libiconv"
 brew "mise"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
-# MIME mail packing and unpacking
-brew "mpack"
 # Network Kanji code conversion Filter (NKF)
 brew "nkf"
 # Apache Parquet command-line tools and utilities
