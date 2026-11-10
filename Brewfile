@@ -42,6 +42,8 @@ brew "libiconv"
 brew "mise"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
+# MIME mail packing and unpacking
+brew "mpack"
 # Network Kanji code conversion Filter (NKF)
 brew "nkf"
 # Apache Parquet command-line tools and utilities
@@ -72,6 +74,7 @@ brew "watch"
 brew "wp-cli"
 # Additional completion definitions for zsh
 brew "zsh-completions"
+cask "adoptopenjdk"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 vscode "amazonwebservices.amazon-q-vscode"
