@@ -1,8 +1,8 @@
 [tools]
-aws = { version = "2.39.3", symlink_bins = "true" }
+aws = { version = "2.39.6", symlink_bins = "true" }
 bun = "1.4.4"
-claude = "2.1.316"
-codex = "0.166.0"
+claude = "2.1.321"
+codex = "0.167.0"
 devcontainer-cli = "0.90.0"
 duckdb = "2.0.0"
 gh = "2.103.3"
@@ -10,13 +10,13 @@ go = "1.27.3"
 jq = "1.8.2"
 mysql = "8.0.34"
 node = "26.13.0"
-pnpm = "12.16.1"
+pnpm = "12.18.0"
 pre-commit = "4.7.0"
 python = "3.15.2"
 ripgrep = "15.2.0"
 terraform = "1.17.1"
 tflint = "0.65.0"
-trivy = "0.76.1"
+trivy = "0.76.2"
 uv = "latest"
 vim = "latest"
 
