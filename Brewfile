@@ -4,8 +4,6 @@ brew "glib"
 brew "harfbuzz"
 # Engine for large-scale data processing
 brew "apache-spark"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Play, record, convert, and stream select audio and video codecs
@@ -46,6 +44,8 @@ brew "mkcert"
 brew "mpack"
 # Network Kanji code conversion Filter (NKF)
 brew "nkf"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Apache Parquet command-line tools and utilities
 brew "parquet-cli"
 # Simplistic interactive filtering tool
