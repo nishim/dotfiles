@@ -12,8 +12,6 @@ brew "ffmpeg"
 brew "gdk-pixbuf"
 # Google Drive CLI Client
 brew "gdrive"
-# GitHub command-line tool
-brew "gh"
 # Prevents you from committing sensitive information to a git repo
 brew "git-secrets"
 # GNU implementation of the famous stream editor
@@ -22,6 +20,8 @@ brew "gnu-sed"
 brew "readline"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
+# Generate introspection data for GObject libraries
+brew "gobject-introspection"
 # Framework for layout and rendering of i18n text
 brew "pango"
 # Library to render SVG files using Cairo
@@ -48,8 +48,6 @@ brew "nkf"
 brew "openssl@3"
 # Apache Parquet command-line tools and utilities
 brew "parquet-cli"
-# Simplistic interactive filtering tool
-brew "peco"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Object-relational database system

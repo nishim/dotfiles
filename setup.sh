@@ -33,3 +33,4 @@ link_claude_dir() {
 link_claude_dir "$PWD/agents/claude/skills" ~/.claude/skills
 link_claude_dir "$PWD/agents/claude/commands" ~/.claude/commands
 link_claude_dir "$PWD/agents/claude/agents" ~/.claude/agents
+ln -fs "$PWD/agents/claude/statusline-command.sh" ~/.claude/statusline-command.sh
